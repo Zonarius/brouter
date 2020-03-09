@@ -144,9 +144,29 @@ assign hascycleway = not
   and ( or cycleway= cycleway=no|none ) and ( or cycleway:left= cycleway:left=no ) ( or cycleway:right= cycleway:right=no )
 
 assign trafficpenalty0 =
-    if highway=primary|primary_link then 5
-    else if highway=secondary|secondary_link then 3
-    else if highway=tertiary|tertiary_link then 1
+    if highway=primary|primary_link then
+    (
+      if      estimated_traffic_class=4 then 8
+      else if estimated_traffic_class=5 then 15
+      else if estimated_traffic_class=6|7 then 20
+      else 8
+    )
+    else if highway=secondary|secondary_link then
+    (
+      if      estimated_traffic_class=3 then 6
+      else if estimated_traffic_class=4 then 8
+      else if estimated_traffic_class=5 then 15
+      else if estimated_traffic_class=6|7 then 18
+      else 3
+    )
+    else if highway=tertiary|tertiary_link then
+    (
+      if      estimated_traffic_class=2 then 3
+      else if estimated_traffic_class=3 then 6
+      else if estimated_traffic_class=4 then 8
+      else if estimated_traffic_class=5|6|7 then 18
+      else 0
+    )
     else 0
 
 assign trafficpenalty =
@@ -158,7 +178,7 @@ assign trafficpenalty =
   else 0
 
 assign gravelpenalty =
-  if surface=compacted|gravel|fine_gravel then 1
+  if surface=compacted|gravel|fine_gravel then 8
   else 0
 
 assign isresidentialorliving = or highway=residential|living_street living_street=yes
