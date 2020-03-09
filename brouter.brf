@@ -25,7 +25,7 @@ assign ignore_cycleroutes       = false  # %ignore_cycleroutes% | Set to true fo
 assign stick_to_cycleroutes     = true  # %stick_to_cycleroutes% | Set to true to just follow cycleroutes | boolean
 assign avoid_unsafe             = true  # %avoid_unsafe% | Set to true to avoid standard highways | boolean
 assign considerTurnRestrictions = false  # %considerTurnRestrictions% | Set to true to take turn restrictions into account | boolean
-assign processUnusedTags        = false  # %processUnusedTags% | Set to true to output unused tags in data tab | boolean
+assign processUnusedTags        = true  # %processUnusedTags% | Set to true to output unused tags in data tab | boolean
 assign consider_traffic = true # %consider_traffic% | Set to true to avoid traffic | boolean
 assign allow_motorways          = false  # %allow_motorways% | Set to true to allow motorways (useful in Asia / Oceania for example) | boolean
 
