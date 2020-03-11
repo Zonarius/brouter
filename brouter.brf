@@ -146,10 +146,10 @@ assign hascycleway = not
 assign trafficpenalty0 =
     if highway=primary|primary_link then
     (
-      if      estimated_traffic_class=4 then 8
-      else if estimated_traffic_class=5 then 15
-      else if estimated_traffic_class=6|7 then 20
-      else 8
+      if      estimated_traffic_class=4 then 16
+      else if estimated_traffic_class=5 then 30
+      else if estimated_traffic_class=6|7 then 40
+      else 16
     )
     else if highway=secondary|secondary_link then
     (
@@ -157,7 +157,7 @@ assign trafficpenalty0 =
       else if estimated_traffic_class=4 then 8
       else if estimated_traffic_class=5 then 15
       else if estimated_traffic_class=6|7 then 18
-      else 3
+      else 6
     )
     else if highway=tertiary|tertiary_link then
     (
@@ -165,7 +165,7 @@ assign trafficpenalty0 =
       else if estimated_traffic_class=3 then 6
       else if estimated_traffic_class=4 then 8
       else if estimated_traffic_class=5|6|7 then 18
-      else 0
+      else 3
     )
     else 0
 
@@ -203,12 +203,12 @@ assign costfactor
   switch    highway=steps                             1000
   switch    route=ferry                               5.67
   switch    highway=bridleway                         5
-  switch    highway=cycleway                          0.5
-  switch    isresidentialorliving                     switch isunpaved 10 1.2
-  switch    highway=service                           switch isunpaved 10 1.2
+  switch    highway=cycleway                          1.2
+  switch    isresidentialorliving                     switch isunpaved 10 1
+  switch    highway=service                           switch isunpaved 10 1
   switch or highway=track or highway=road or highway=path highway=footway
-   switch tracktype=grade1 switch isunpaved 3 1
-   switch tracktype=grade2 switch isunpaved 10 2
+   switch tracktype=grade1 switch ispaved 1 4
+   switch tracktype=grade2 switch ispaved 1 6
    switch tracktype=grade3 10.0
    switch tracktype=grade4 20.0
    switch tracktype=grade5 30.0
