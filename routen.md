@@ -8,3 +8,7 @@ https://brouter.de/brouter-web/#map=12/48.2881/16.4352/standard&lonlats=16.38912
 # Orth an der Donau -> Rutzendorf -> Heim
 
 https://brouter.de/brouter-web/#map=12/48.1866/16.5796/standard&lonlats=16.389121,48.218874;16.41153,48.227382;16.507492,48.171939;16.692481,48.151113;16.62609,48.207344;16.565905,48.195874;16.389177,48.21879
+
+# Biedermannsdorf-Runde
+
+https://brouter.de/brouter-web/#map=14/48.0893/16.3540/standard,Waymarked_Trails-Cycling&lonlats=16.389121,48.218874;16.351765,48.079862;16.441721,48.098031;16.388883,48.218784
