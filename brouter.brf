@@ -201,7 +201,7 @@ assign costfactor
   switch    highway=unclassified                      1.1
   switch    highway=pedestrian                        10
   switch    highway=steps                             1000
-  switch    route=ferry                               5.67
+  switch    route=ferry                               10000
   switch    highway=bridleway                         5
   switch    highway=cycleway                          1.2
   switch    isresidentialorliving                     switch isunpaved 10 1
