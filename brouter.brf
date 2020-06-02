@@ -108,6 +108,8 @@ assign footaccess =
 # otherwise access is forbidden
 #
 assign accesspenalty
+       if access=customers then 10000
+       else
        switch bikeaccess
               0
               switch footaccess
