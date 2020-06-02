@@ -229,7 +229,7 @@ assign costfactor
    switch tracktype=grade3 10.0
    switch tracktype=grade4 20.0
    switch tracktype=grade5 30.0
-   switch or bicycle=designated bicycle_road=yes 2.0
+   switch or bicycle=designated bicycle_road=yes 1.2
    switch ispaved 2.0 100.0
    5.0
 
