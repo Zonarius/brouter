@@ -146,8 +146,14 @@ assign hascycleway = not
   and ( or cycleway= cycleway=no|none ) and ( or cycleway:left= cycleway:left=no ) ( or cycleway:right= cycleway:right=no )
 
 assign trafficpenalty0 =
-    if      maxspeed=30|40 then 0
-    else if any_cycleroute then 0
+    if any_cycleroute then 0
+    else if highway=residential then
+    (
+           if maxspeed=30 then 0.2
+           else if maxspeed=40 then 0.5
+           else if maxspeed=50 then 0.7
+           else 0.2
+    )
     else if highway=primary|primary_link then
     (
       if      estimated_traffic_class=4 then 16
