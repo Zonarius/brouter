@@ -61,7 +61,7 @@ assign ispaved surface=paved|asphalt|concrete|paving_stones
 assign isunpaved not or surface= or ispaved surface=fine_gravel|cobblestone|gravel
 
 assign turncost = if junction=roundabout then 0
-                  else 90
+                  else 250
 
 assign initialcost switch route=ferry 10000 0
 
