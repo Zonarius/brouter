@@ -221,8 +221,8 @@ assign costfactor
   switch    route=ferry                               10000
   switch    highway=bridleway                         5
   switch    highway=cycleway                          1.2
-  switch    isresidentialorliving                     switch isunpaved 10 1
-  switch    highway=service                           switch isunpaved 10 1
+  switch    isresidentialorliving                     1
+  switch    highway=service                           1
   switch or highway=track or highway=road or highway=path highway=footway
    switch tracktype=grade1 switch ispaved 1 4
    switch tracktype=grade2 switch ispaved 1 6
