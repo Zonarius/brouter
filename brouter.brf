@@ -167,6 +167,7 @@ assign trafficpenalty0 =
       else if estimated_traffic_class=4 then 15
       else if estimated_traffic_class=5 then 30
       else if estimated_traffic_class=6|7 then 40
+      else if maxspeed=100 then 15
       else 6
     )
     else if highway=tertiary|tertiary_link then
