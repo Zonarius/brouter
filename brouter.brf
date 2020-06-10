@@ -310,7 +310,12 @@ assign footaccess
                         0
                         1
 
+assign traffic_signals_penalty
+       switch or highway=traffic_signals crossing=traffic_signals
+              1000 0
+
 assign initialcost
+       add traffic_signals_penalty
        switch bikeaccess
               0
               switch footaccess
