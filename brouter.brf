@@ -60,6 +60,8 @@ assign nodeaccessgranted or any_cycleroute lcn=yes
 assign ispaved surface=paved|asphalt|concrete|paving_stones
 assign isunpaved not or surface= or ispaved surface=fine_gravel|cobblestone|gravel
 
+assign mtb_route and route_mtb_=yes highway=track|path
+
 assign turncost = if junction=roundabout then 0
                   else 250
 
@@ -163,7 +165,10 @@ assign trafficpenalty0 =
     )
     else if highway=secondary|secondary_link then
     (
-      if      estimated_traffic_class=3 then 6
+      if      maxspeed=30 then 0.5
+      else if maxspeed=40 then 0.7
+      else if maxspeed=50 then 0.9
+      else if estimated_traffic_class=3 then 6
       else if estimated_traffic_class=4 then 15
       else if estimated_traffic_class=5 then 30
       else if estimated_traffic_class=6|7 then 40
@@ -172,7 +177,10 @@ assign trafficpenalty0 =
     )
     else if highway=tertiary|tertiary_link then
     (
-      if      estimated_traffic_class=2 then 3
+      if      maxspeed=30 then 0.4
+      else if maxspeed=40 then 0.6
+      else if maxspeed=50 then 0.8
+      else if estimated_traffic_class=2 then 3
       else if estimated_traffic_class=3 then 6
       else if estimated_traffic_class=4 then 8
       else if estimated_traffic_class=5|6|7 then 18
@@ -199,6 +207,10 @@ assign gravelpenalty =
   if surface=compacted|gravel|fine_gravel then 8
   else 0
 
+assign mtb_penalty =
+  if mtb_route then 10
+  else 0
+
 assign isresidentialorliving = or highway=residential|living_street living_street=yes
 
 assign costfactor
@@ -210,6 +222,7 @@ assign costfactor
   add max onewaypenalty accesspenalty
   add trafficpenalty
   add gravelpenalty
+  add mtb_penalty
 
   switch or highway=motorway highway=motorway_link    switch allow_motorways 1.5 10000
   switch or highway=trunk highway=trunk_link          switch allow_motorways 1.5 50
