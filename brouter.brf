@@ -19,15 +19,12 @@
 assign validForBikes = true
 
 # Use the following switches to change behaviour
-assign allow_steps              = false   # %allow_steps% | Set to false to disallow steps | boolean
-assign allow_ferries            = false   # %allow_ferries% | set to false to disallow ferries | boolean
 assign ignore_cycleroutes       = false  # %ignore_cycleroutes% | Set to true for better elevation results | boolean
 assign stick_to_cycleroutes     = true  # %stick_to_cycleroutes% | Set to true to just follow cycleroutes | boolean
 assign avoid_unsafe             = true  # %avoid_unsafe% | Set to true to avoid standard highways | boolean
 assign considerTurnRestrictions = false  # %considerTurnRestrictions% | Set to true to take turn restrictions into account | boolean
 assign processUnusedTags        = true  # %processUnusedTags% | Set to true to output unused tags in data tab | boolean
 assign consider_traffic = true # %consider_traffic% | Set to true to avoid traffic | boolean
-assign allow_motorways          = false  # %allow_motorways% | Set to true to allow motorways (useful in Asia / Oceania for example) | boolean
 
 # Change elevation parameters
 assign consider_elevation = true  # %consider_elevation% | Set to false to ignore elevation in routing | boolean
@@ -41,10 +38,10 @@ assign uphillcost         = if consider_elevation then uphillcost else 0
 
 # Kinematic model parameters (travel time computation)
 assign totalMass  = 80     # %totalMass% | Mass (in kg) of the bike + biker, for travel time computation | number
-assign maxSpeed   = 60     # %maxSpeed% | Absolute maximum speed (in km/h), for travel time computation | number
+assign maxSpeed   = 100     # %maxSpeed% | Absolute maximum speed (in km/h), for travel time computation | number
 assign S_C_x      = 0.225  # %S_C_x% | Drag coefficient times the reference area (in m^2), for travel time computation | number
 assign C_r        = 0.01   # %C_r% | Rolling resistance coefficient (dimensionless), for travel time computation | number
-assign bikerPower = 120    # %bikerPower% | Average power (in W) provided by the biker, for travel time computation | number
+assign bikerPower = 150    # %bikerPower% | Average power (in W) provided by the biker, for travel time computation | number
 
 # Turn instructions settings
 assign turnInstructionMode          = 0     # %turnInstructionMode% | Mode for the generated turn instructions | [0=none, 1=auto-choose, 2=locus-style, 3=osmand-style]
@@ -227,8 +224,8 @@ assign costfactor
   add gravelpenalty
   add mtb_penalty
 
-  switch or highway=motorway highway=motorway_link    switch allow_motorways 1.5 10000
-  switch or highway=trunk highway=trunk_link          switch allow_motorways 1.5 50
+  switch or highway=motorway highway=motorway_link    10000
+  switch or highway=trunk highway=trunk_link          50
   switch or highway=primary highway=primary_link      1.2
   switch or highway=secondary highway=secondary_link  1.1
   switch or highway=tertiary highway=tertiary_link    1.0
