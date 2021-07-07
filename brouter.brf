@@ -33,6 +33,9 @@ assign downhillcutoff     = 1.5   # %downhillcutoff% | Gradients below this valu
 assign uphillcost         = 0     # %uphillcost% | Cost for going uphill | number
 assign uphillcutoff       = 1.5   # %uphillcutoff% | Gradients below this value in percents are not counted.  | number
 
+assign tucost             = 250   # %tucost% | Turn Cost  | number
+assign traffic_light_cost = 200   # %traffic_light_cost% | Traffic Light Cost  | number
+
 assign downhillcost       = if consider_elevation then downhillcost else 0
 assign uphillcost         = if consider_elevation then uphillcost else 0
 
@@ -60,7 +63,7 @@ assign isunpaved not or surface= or ispaved surface=fine_gravel|cobblestone|grav
 assign mtb_route and route_mtb_=yes highway=track|path
 
 assign turncost = if junction=roundabout then 0
-                  else 250
+                  else tucost
 
 assign initialcost switch route=ferry 10000 0
 
@@ -325,7 +328,7 @@ assign footaccess
 
 assign traffic_signals_penalty
        switch or highway=traffic_signals crossing=traffic_signals
-              200 0
+              traffic_light_cost 0
 
 assign initialcost
        add traffic_signals_penalty
