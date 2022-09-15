@@ -1,0 +1,38 @@
+---context:global   # following code refers to global config
+
+# Bike profile
+assign validForBikes true
+
+# Use the following switches to change behaviour
+assign processUnusedTags true
+
+
+---context:way   # following code refers to way-tags
+
+assign gegen_einbahn
+    and oneway=yes reversedirection=yes 
+
+assign costfactor 
+    switch railway=tram 10000
+    switch railway=rail 10000
+    switch railway=light_rail 10000
+    switch highway=motorway 10000
+    switch psv=yes 10000
+    switch access=no 10
+    switch embedded_rails=tram 10
+    switch bicycle=use_sidepath 10
+    switch highway=footway 10
+    switch highway=path 5
+    switch highway=primary 10
+    switch highway=secondary 10
+    switch tracktype=grade5 5
+    switch tracktype=grade4 4
+    switch tracktype=grade3 3
+    switch tracktype=grade2 2
+    switch gegen_einbahn 10
+    1
+
+
+---context:node  # following code refers to node tags
+
+assign initialcost 0
